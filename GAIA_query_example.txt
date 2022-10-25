@@ -18,7 +18,6 @@ and
 (pmdec is not null)
 and
 
-
 CONTAINS(
   POINT('ICRS',gaiadr3.gaia_source.ra,gaiadr3.gaia_source.dec),
   CIRCLE(
