@@ -1,2 +1,2 @@
 # Using_UPMASK_With_GAIA
-# You need to have R installed on your machine to use UPMASK
+UPMASK paper: https://arxiv.org/pdf/1309.4471.pdf
