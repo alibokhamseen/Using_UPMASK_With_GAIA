@@ -1,0 +1,29 @@
+# gaia query example for Berkeley 39
+
+  SELECT gaia_source.source_id,gaia_source.ra,gaia_source.dec,gaia_source.parallax,gaia_source.parallax_error,gaia_source.pmra,gaia_source.pmra_error,gaia_source.pmdec,gaia_source.pmdec_error,gaia_source.phot_g_mean_flux,gaia_source.phot_g_mean_flux_error,gaia_source.phot_g_mean_mag,gaia_source.phot_bp_mean_flux,gaia_source.phot_bp_mean_flux_error,gaia_source.phot_bp_mean_mag,gaia_source.phot_rp_mean_flux,gaia_source.phot_rp_mean_flux_error,gaia_source.phot_rp_mean_mag,gaia_source.bp_rp,gaia_source.bp_g,gaia_source.g_rp
+FROM gaiadr3.gaia_source 
+WHERE
+(phot_g_mean_flux is not null)
+and
+(phot_bp_mean_flux is not null)
+and
+(phot_rp_mean_flux is not null)
+and
+(parallax_error is not null)
+and
+(parallax is not null)
+and
+(pmra is not null)
+and
+(pmdec is not null)
+and
+
+
+CONTAINS(
+  POINT('ICRS',gaiadr3.gaia_source.ra,gaiadr3.gaia_source.dec),
+  CIRCLE(
+    'ICRS',
+    COORD1(EPOCH_PROP_POS(116.70199999999998,-4.665,.2010,-1.7300,-1.6450,59.8900,2000,2016.0)),
+    COORD2(EPOCH_PROP_POS(116.70199999999998,-4.665,.2010,-1.7300,-1.6450,59.8900,2000,2016.0)),
+    0.11666666666666667)
+)=1
